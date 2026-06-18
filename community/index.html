@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="Window of Ascent — join the community. Discord server, working groups, and shared learning.">
+   <title>Community — Window of Ascent</title>
+   <link rel="canonical" href="https://ascendism.github.io/community/">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../css/site.css">
+   <style>
+     .community-hero {
+       background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 100%);
+       color: #fff;
+       padding: 60px 0;
+       text-align: center;
+     }
+     .community-hero h1 {
+       font-size: 2.5rem;
+       margin-bottom: 16px;
+     }
+     .community-hero p {
+       font-size: 1.2rem;
+       max-width: 600px;
+       margin: 0 auto 24px;
+       opacity: 0.9;
+     }
+     .discord-cta {
+       display: inline-block;
+       background: #5865F2;
+       color: #fff;
+       padding: 12px 24px;
+       border-radius: 8px;
+       text-decoration: none;
+       font-weight: 600;
+       transition: background 0.2s;
+     }
+     .discord-cta:hover {
+       background: #4752C4;
+     }
+     .community-section {
+       padding: 40px 0;
+     }
+     .community-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       gap: 24px;
+       margin-top: 24px;
+     }
+     .community-card {
+       background: #f8f9fa;
+       border: 1px solid #e9ecef;
+       border-radius: 8px;
+       padding: 24px;
+     }
+     .community-card h3 {
+       color: #2c3e50;
+       margin-bottom: 12px;
+     }
+     .community-card p {
+       color: #6c757d;
+       line-height: 1.6;
+     }
+     .join-steps {
+       counter-reset: step;
+       list-style: none;
+       padding: 0;
+     }
+     .join-steps li {
+       counter-increment: step;
+       padding: 16px 0 16px 48px;
+       position: relative;
+       border-bottom: 1px solid #e9ecef;
+     }
+     .join-steps li::before {
+       content: counter(step);
+       position: absolute;
+       left: 0;
+       top: 16px;
+       width: 32px;
+       height: 32px;
+       background: #5865F2;
+       color: #fff;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-weight: 600;
+     }
+     .group-list {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+       gap: 16px;
+       margin-top: 16px;
+     }
+     .group-item {
+       background: #fff;
+       border: 1px solid #dee2e6;
+       border-radius: 6px;
+       padding: 16px;
+     }
+     .group-item h4 {
+       color: #2c3e50;
+       margin-bottom: 8px;
+     }
+     .group-item p {
+       color: #6c757d;
+       font-size: 0.9rem;
+     }
+     .group-item .status {
+       display: inline-block;
+       padding: 2px 8px;
+       border-radius: 12px;
+       font-size: 0.8rem;
+       font-weight: 600;
+     }
+     .group-item .status.open {
+       background: #d4edda;
+       color: #155724;
+     }
+     .group-item .status.full {
+       background: #f8d7da;
+       color: #721c24;
+     }
+   </style>
+</head>
+<body>
+   <a class="skip-link" href="#main">Skip to content</a>
+   <header class="site-header">
+     <div class="wrap site-header__bar">
+       <nav class="site-nav" aria-label="Primary">
+         <a class="site-nav__brand" href="../">Window of Ascent</a>
+         <div class="site-nav__links">
+           <a href="../#read-book">Read the book</a>
+           <a href="../#news">News</a>
+           <a href="../about/">About</a>
+           <a href="../resources/">Resources</a>
+           <a href="../community/" aria-current="page">Discord</a>
+         </div>
+       </nav>
+     </div>
+   </header>
+
+   <div class="community-hero">
+     <div class="wrap">
+       <h1>Join the Community</h1>
+       <p>Connect with others building toward the same future. Join working groups, share knowledge, and grow together.</p>
+       <a class="discord-cta" href="#" data-discord-link>Join our Discord Server</a>
+     </div>
+   </div>
+
+   <main id="main">
+     <section class="community-section wrap">
+       <h2>Why Join?</h2>
+       <div class="community-grid">
+         <div class="community-card">
+           <h3>🎯 Purpose-Driven</h3>
+           <p>We're building practical skills and connections for a future where self-reliance isn't just a dream but a reality. Every member brings something valuable to share.</p>
+         </div>
+         <div class="community-card">
+           <h3>🤝 Complementary Skills</h3>
+           <p>Our group matching system pairs people based on complementary strengths and weaknesses. Learn from others while teaching what you know.</p>
+         </div>
+         <div class="community-card">
+           <h3>📚 Shared Learning</h3>
+           <p>Access curated resources, participate in discussions, and contribute to our growing knowledge base on homesteading, permaculture, and natural building.</p>
+         </div>
+       </div>
+     </section>
+
+     <section class="community-section wrap">
+       <h2>How to Join</h2>
+       <ol class="join-steps">
+         <li><strong>Join the Discord server</strong> — Click the button above to enter our community hub</li>
+         <li><strong>Read the rules</strong> — Check out #start-here for our community guidelines</li>
+         <li><strong>Complete your profile</strong> — Fill out your skills, interests, and goals</li>
+         <li><strong>Get interviewed</strong> — An admin will schedule a brief chat to understand your background</li>
+         <li><strong>Join a working group</strong> — Based on your profile, you'll be matched with complementary members</li>
+         <li><strong>Start building</strong> — Share knowledge, collaborate on projects, and grow together</li>
+       </ol>
+     </section>
+
+     <section class="community-section wrap">
+       <h2>Working Groups</h2>
+       <p>Our complementary matching system creates balanced groups where everyone brings something unique to the table.</p>
+       <div class="group-list">
+         <div class="group-item">
+           <h4>Group 1</h4>
+           <p>Focus: Natural building & construction</p>
+           <span class="status open">Open</span>
+         </div>
+         <div class="group-item">
+           <h4>Group 2</h4>
+           <p>Focus: Permaculture & food systems</p>
+           <span class="status open">Open</span>
+         </div>
+         <div class="group-item">
+           <h4>Group 3</h4>
+           <p>Focus: Technology & automation</p>
+           <span class="status open">Open</span>
+         </div>
+         <div class="group-item">
+           <h4>Group 4</h4>
+           <p>Focus: Business & finance</p>
+           <span class="status full">Full</span>
+         </div>
+         <div class="group-item">
+           <h4>Group 5</h4>
+           <p>Focus: Community & leadership</p>
+           <span class="status open">Open</span>
+         </div>
+       </div>
+     </section>
+
+     <section class="community-section wrap">
+       <h2>Community Channels</h2>
+       <div class="community-grid">
+         <div class="community-card">
+           <h3>📢 Announcements</h3>
+           <p>Important updates, news, and project developments</p>
+         </div>
+         <div class="community-card">
+           <h3>💬 General Discussion</h3>
+           <p>Open conversation about ideas, projects, and the future</p>
+         </div>
+         <div class="community-card">
+           <h3>🎓 Learning & Education</h3>
+           <p>Share resources, ask questions, and help others learn</p>
+         </div>
+         <div class="community-card">
+           <h3>🏗️ Projects & Building</h3>
+           <p>Collaborate on practical projects and share progress</p>
+         </div>
+         <div class="community-card">
+           <h3>🌱 Permaculture & Homesteading</h3>
+           <p>Discuss growing food, animal husbandry, and sustainable living</p>
+         </div>
+         <div class="community-card">
+           <h3>📚 Book Club</h3>
+           <p>Read and discuss "Window of Ascent" together</p>
+         </div>
+       </div>
+     </section>
+   </main>
+
+   <footer class="wrap site-footer">
+     <p class="site-footer__tagline"><strong>Window of Ascent</strong> — tools, incentives, and a narrowing window.</p>
+     <p class="site-footer__links">
+       <a href="../">Home</a> ·
+       <a href="../book/">Read the book</a> ·
+       <a href="../about/">About</a> ·
+       <a href="../resources/">Resources</a> ·
+       <a href="../community/">Discord</a> ·
+       <a href="https://github.com/Ascendism/ascendism.github.io">Site repo</a> ·
+       <a href="https://github.com/Ascendism/ascendism.github.io/issues">Issues</a>
+     </p>
+     <p class="site-footer__contact">Questions or collaboration: <a href="https://github.com/Ascendism/ascendism.github.io/issues/new">open an issue</a> or join us on <a data-discord-link href="#" aria-disabled="true">Discord</a>.</p>
+   </footer>
+
+   <script src="../js/site.js"></script>
+</body>
+</html>
