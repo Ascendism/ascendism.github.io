@@ -2,10 +2,16 @@
   "version": 1,
   "articles": [
     {
+      "file": "news/2026-05-21-eo-14318-data-center-permitting.html",
+      "date": "2026-05-21",
+      "title": "The Other Data Center Sprint — Federal Permitting, Not Just Tax Credits",
+      "summary": "OBBBA moves money forward. EO 14318 (July 2025) moves federal permitting and land forward for >100 MW AI campuses. Two levers, one race — and the questions county boards should ask."
+    },
+    {
       "file": "news/2026-05-17-data-centers-farmland.html",
       "date": "2026-05-17",
       "title": "The Real Reason Data Centers Are Springing Up Everywhere (It's Not What You Think)",
-      "summary": "The surveillance-center rumor doesn't match the filings. The rush is compute, clean-energy tax credits, and a grid race against a 2032 deadline.",
+      "summary": "The surveillance-center rumor doesn't match the filings. The rush is compute, OBBBA and IRA tax clocks (equipment depreciation, wind/solar by 2026–2027), and grid interconnection queues.",
       "learnMore": {
         "headline": "Want to learn more about AI data centers and water use?",
         "youtubeId": "H_c6MWk7PQc"

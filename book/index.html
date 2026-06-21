@@ -1,10 +1,20 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Window of Ascent â€” full manuscript draft (work in progress).">
-  <title>Window of Ascent â€” Read</title>
+  <meta name="description" content="Window of Ascent — full manuscript draft (work in progress).">
+  <meta property="og:site_name" content="Window of Ascent">
+  <meta property="og:type" content="book">
+  <meta property="og:title" content="Window of Ascent — Read">
+  <meta property="og:description" content="Full manuscript draft — tools, incentives, and a narrowing window.">
+  <meta property="og:url" content="https://ascendism.github.io/book/">
+  <meta property="og:image" content="https://ascendism.github.io/assets/window_banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Window of Ascent — Read">
+  <meta name="twitter:description" content="Full manuscript draft — tools, incentives, and a narrowing window.">
+  <meta name="twitter:image" content="https://ascendism.github.io/assets/window_banner.png">
+  <title>Window of Ascent — Read</title>
   <link rel="canonical" href="https://ascendism.github.io/book/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,40 +24,95 @@
 </head>
 <body class="book-shell">
   <header class="book-header wrap">
-    <p class="eyebrow"><a href="../">Window of Ascent</a> Â· Manuscript</p>
+    <p class="eyebrow"><a href="../">Window of Ascent</a> · Manuscript</p>
     <h1 id="book-title">Window of Ascent</h1>
-    <p class="lead" id="book-subtitle">Draft â€” work in progress</p>
+    <p class="lead" id="book-subtitle">Draft — work in progress</p>
     <p class="book-meta">
-      <span id="part-count"></span> Â·
-      <a href="read/manifest.json">manifest.json</a> Â·
-      <a href="read/full.md">full.md</a> (agents)
+      <span id="part-count"></span> ·
+      <span id="section-reading-time" hidden></span>
+      <a href="read/manifest.json">manifest.json</a> ·
+      <a href="read/full.md">full.md</a> ·
+      <a href="read/search-index.json">search-index.json</a>
     </p>
+    <button type="button" class="book-nav-toggle" id="book-nav-toggle" aria-expanded="false" aria-controls="book-nav" hidden>
+      Contents
+    </button>
   </header>
+
+  <div class="book-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="1" aria-valuenow="1" aria-valuemax="1">
+    <div class="book-progress__bar" id="book-progress-bar"></div>
+  </div>
 
   <main class="book-layout" id="book-layout">
     <nav class="book-nav" id="book-nav" aria-label="Chapters">
+      <div class="book-search" id="book-search">
+        <label class="visually-hidden" for="book-search-input">Search manuscript</label>
+        <input type="search" id="book-search-input" class="book-search__input" placeholder="Search draft…" autocomplete="off" spellcheck="false" />
+        <ul id="book-search-results" class="book-search__results" hidden aria-live="polite"></ul>
+      </div>
+      <div class="book-paths" id="book-paths" hidden>
+        <p class="nav-label">Reading paths</p>
+        <ul id="book-paths-list" class="book-paths__list"></ul>
+      </div>
       <p class="nav-label">Contents</p>
       <ol id="nav-list"></ol>
+      <p class="book-nav__hint">← → between sections · <kbd>/</kbd> search · <kbd>?</kbd> shortcuts · <span class="book-nav__legend"><span class="nav-mark nav-mark--resume" aria-hidden="true"></span> resume</span> · <span class="book-nav__legend"><span class="nav-mark nav-mark--lock" aria-hidden="true"></span> open lock</span> · <span class="book-nav__legend"><span class="nav-mark nav-mark--verified" aria-hidden="true"></span> verified</span></p>
     </nav>
 
-    <article class="book-content wrap" id="book-content">
-      <p class="loading">Loadingâ€¦</p>
-    </article>
+    <div class="book-main">
+      <div class="book-section-bar wrap" id="book-section-bar" hidden>
+        <p class="book-section-bar__stats" id="book-section-stats" aria-live="polite"></p>
+        <div class="book-section-bar__actions">
+          <div class="book-type-controls" role="group" aria-label="Text size">
+            <button type="button" class="book-type-btn" id="book-type-sm" aria-pressed="false" title="Smaller text">A−</button>
+            <button type="button" class="book-type-btn" id="book-type-md" aria-pressed="true" title="Default text">A</button>
+            <button type="button" class="book-type-btn" id="book-type-lg" aria-pressed="false" title="Larger text">A+</button>
+          </div>
+          <button type="button" class="book-copy-link" id="book-print-section" title="Print this section">Print</button>
+          <button type="button" class="book-copy-link" id="book-download-section" title="Download this section as markdown">Download</button>
+          <a class="book-copy-link book-copy-link--anchor" href="read/full.md" title="Full manuscript markdown">Full .md</a>
+          <button type="button" class="book-copy-link" id="book-copy-link" title="Copy share link (rich preview on Discord and social)">Copy link</button>
+          <button type="button" class="book-copy-link" id="book-shortcuts-btn" title="Keyboard shortcuts">?</button>
+        </div>
+      </div>
+      <article class="book-content wrap" id="book-content">
+        <p class="loading">Loading…</p>
+      </article>
+
+      <aside class="book-next wrap" id="book-next" hidden aria-label="Recommended next"></aside>
+
+      <nav class="book-pager wrap" id="book-pager" aria-label="Section navigation" hidden></nav>
+    </div>
   </main>
 
+  <dialog class="book-shortcuts" id="book-shortcuts" aria-labelledby="book-shortcuts-title">
+    <div class="book-shortcuts__panel">
+      <header class="book-shortcuts__header">
+        <h2 id="book-shortcuts-title">Keyboard shortcuts</h2>
+        <button type="button" class="book-shortcuts__close" id="book-shortcuts-close" aria-label="Close">×</button>
+      </header>
+      <dl class="book-shortcuts__list">
+        <div><dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous / next section</dd></div>
+        <div><dt><kbd>/</kbd></dt><dd>Focus search</dd></div>
+        <div><dt><kbd>?</kbd></dt><dd>Show this panel</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Clear search or close panel</dd></div>
+      </dl>
+    </div>
+  </dialog>
+
   <footer class="wrap site-footer book-footer">
-    <p class="site-footer__tagline"><strong>Window of Ascent</strong> â€” tools, incentives, and a narrowing window.</p>
+    <p class="site-footer__tagline"><strong>Window of Ascent</strong> — tools, incentives, and a narrowing window.</p>
     <p class="site-footer__links">
-      <a href="../">Home</a> Â·
-      <a href="./">Read the book</a> Â·
-      <a href="../about/">About</a> Â·
-      <a href="../resources/">Resources</a> Â·
-      <a href="../community/">Discord</a> Â·
-      <a href="https://github.com/Ascendism/ascendism.github.io">Site repo</a> Â·
+      <a href="../">Home</a> ·
+      <a href="./">Read the book</a> ·
+      <a href="../about/">About</a> ·
+      <a href="../resources/">Resources</a> ·
+      <a data-discord-link href="#" aria-disabled="true">Discord</a> ·
+      <a href="https://github.com/Ascendism/ascendism.github.io">Site repo</a> ·
       <a href="https://github.com/Ascendism/ascendism.github.io/issues">Issues</a>
     </p>
     <p class="site-footer__note">Machine-readable: <code>read/manifest.json</code>, per-chapter <code>read/*.md</code>, concatenated <code>read/full.md</code>.</p>
-    <p class="site-footer__contact">Questions or collaboration: <a href="https://github.com/Ascendism/ascendism.github.io/issues/new">open an issue</a> or join us on <a href="../community/">Discord</a>.</p>
+    <p class="site-footer__contact">Questions or collaboration: <a href="https://github.com/Ascendism/ascendism.github.io/issues/new">open an issue</a> or join us on <a data-discord-link href="#" aria-disabled="true">Discord</a>.</p>
   </footer>
 
   <script src="../js/site.js"></script>

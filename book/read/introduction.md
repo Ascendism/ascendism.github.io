@@ -1,6 +1,6 @@
 ---
 id: introduction
-index: 0
+index: 4
 title: "Introduction — The Narrowing Window"
 status: draft
 format: markdown
@@ -13,13 +13,13 @@ It is permaculture's first rule. It is also the rule most people in the AI debat
 
 A system cannot be evaluated apart from its incentives. The architecture diagram is not the architecture. The README is not the system. What actually runs is the artifact of who owns the budget, who signs the procurement contract, what the on-call rotation can sustain, and which ratepayer is on the hook for the kilowatt-hour nobody priced. Pretend that layer away and the system shows up later, eating something it was never supposed to eat.
 
-The principle holds for authentication services and substations. For recommendation algorithms and irrigation easements. Engineering has known this forever. The next decade will be shaped by people who keep that knowledge in front of them and lost by people who set it down because the marketing was convincing.
+The principle holds for authentication services and substations. For recommendation algorithms and irrigation easements. People who maintain systems have known this for decades. The next decade will be shaped by people who keep that knowledge in front of them and lost by people who set it down because the marketing was convincing.
 
 The pattern language that carries this argument comes from an unexpected place. Gardeners file it under permaculture: observe before intervening; catch and store energy, attention included; read edges; refuse dead ends only a vendor can reboot. The label is optional. The habits — observability, blast radius, graceful degradation, vendor-independence — already live in any team that has been on call long enough to mistrust a happy path. Permaculture turns out to be a design discipline before it is a lifestyle, which is precisely why it ports cleanly into engineering review.
 
-Apply the observe-first habit honestly to the present, and a strange thing comes into view. The most powerful general-purpose tool the species has ever produced is sitting on the ordinary table — downloadable, runnable on a four-year-old gaming PC, free in the literal sense of the word — and many of the people best positioned to put it to regenerative or independent use have been told to fear it without examining it.
+Apply the observe-first habit honestly to the present, and a strange thing comes into view. A capable general-purpose model is sitting on the ordinary table — downloadable, runnable on hardware many households already own — and many of the people best positioned to put it to regenerative or independent use have been told to fear it without examining it.
 
-The fear is earned. Water draws, transmission corridors, ratepayer subsidies, contracts written in offices that have never seen the watershed — anyone with a creek or a breaker panel to lose has ground to stand on. The mistake happens after the fear. It is the slow translation of *this* datacenter, on *this* land, under *those* owners, into something flatter: that computation itself is the enemy.
+The fear is earned. Water draws, transmission corridors, ratepayer subsidies, contracts written in offices that have never seen the watershed — anyone with a creek or a breaker panel to lose has ground to stand on. The mistake happens after the fear. It is the slow translation of *this* data center, on *this* land, under *those* owners, into something flatter: that computation itself is the enemy.
 
 A system that wants everyone's data catalogued for profit needs the warehouse buildout, and benefits when its critics conclude that all compute belongs to it by default. Refusal blanket enough to cover the household laptop is the one outcome the incumbent does not have to fight for.
 
@@ -33,19 +33,19 @@ Open-weight releases stepped capable systems out from behind a single company's 
 
 None of this lasts forever.
 
-Pricing tiers tighten. Licenses change. Concentration eats openings. The EU AI Act is staging in from 2025, the heaviest obligations from August 2026. The US moved through Executive Order 14110 and NIST's AI risk-management framework — neither permanent, both real while they last. Implementation will determine whether the next years feel like protection or suffocation.
+Pricing tiers tighten. Licenses change. Concentration eats openings. The EU AI Act is staging in from 2025, the heaviest obligations from August 2026. US federal AI policy whips with each administration — executive orders come and go; NIST's voluntary AI risk-management framework outlasts any single signing. Implementation will determine whether the next years feel like protection or suffocation.
 
 And then there are the closures that never make a statute. The moment a vendor retires a depended-on feature. A cloud bill that doubles. A customized tool that wakes under tomorrow's license. The work is to notice those levers while they are still negotiable — through diversification of tools, through local or offline options, through skills that do not evaporate when a dashboard changes color.
 
 There is a steelman worth hearing. Open weights did cut one kind of gate. For some actors, clearer regulation reduces legal fog. If the window closes for some, it may open for others. None of that removes the pressure. It complicates it. And a complicating truth is still a truth you need to act on, not a reason to freeze.
 
-Land and tenure sit at the center of many of the exit ramps this book keeps returning to. U.S. cropland averaged $5,570 per acre in 2024. The Economic Research Service has documented, for years, that access to land and capital ranks among the largest obstacles facing beginning farmers. Those numbers use U.S. statistics as illustration; substitute your jurisdiction's land and credit data when you act. Nothing in this book is financial advice. It is pressure to match dreams to structure.
+Land and tenure sit at the center of many of the exit ramps this book keeps returning to. Entry is expensive; credit is uneven; lease clauses matter as much as sticker price. The opening chapter walks the numbers with USDA sources. Those examples use U.S. statistics as illustration; substitute your jurisdiction's land and credit data when you act. Nothing in this book is financial advice. It is pressure to match dreams to structure.
 
-A permaculture design assistant that runs offline on a five-year-old laptop and helps a beginning farmer plan swales, guild plantings, and seasonal cash flow is not a fantasy. Local-first AI is not a manifesto either — it is a plausible engineering target. Capable open-weight models run on consumer hardware. Inference runtimes improve monthly. Building products that survive a vendor pricing reshuffle or a corporate strategic pivot is no longer exotic; it is a specification any responsible builder can write while the defaults still allow it. After that, "local-first" gets slowly redefined to mean whatever the incumbent permits — the failure mode every prior platform cycle has documented. Neither the farm tool nor a community language model owned by a cooperative needs a hyperscale campus next door. Both are buildable today. That is what the window is open for.
+Local-first AI is not a manifesto — it is a plausible engineering target. Capable open-weight models run on consumer hardware you may already own. Building products that survive a vendor pricing reshuffle or a corporate strategic pivot is no longer exotic; it is a specification any responsible builder can write while the defaults still allow it. After that, "local-first" gets slowly redefined to mean whatever the incumbent permits — the failure mode every prior platform cycle has documented. Neither a farm planning tool nor a community language model owned by a cooperative needs a hyperscale campus next door. Both are buildable today. That is what the window is open for.
 
 This book works from creative fields models have already bent — music, design, writing, programming — and from land, water, and infrastructure that does not care what you called yourself on the internet. AI did not invent the incentive structure. It inherited it and, in places, accelerated what was already true.
 
-Early chapters press what you are actually trying to build and why purity about tools so often disguises confusion about ends. Middle chapters walk incentives, moral panic, and infrastructure — the same pattern that sends outrage at a model can send outrage at a composting ordinance without redesigning the incentive that caused the harm. Later chapters face the objections head on: hallucination, capture, deskilling, energy, enclosure. None of it is waved away. The last movement is practical: use the window without being owned. Build an exit ramp that can actually be walked — not fantasy total escape, but a sequence of steps that respects soil, law, cash flow, and attention spans.
+Early chapters press what you are trying to build and why tool purity often disguises confusion about ends. Middle chapters walk incentives, panic, and infrastructure — including assistive pipelines many disabled people already depend on, treated honestly later, not as a shield against critique. Later chapters face objections without waving them away. The last movement is practical: use the window without being owned, and build an exit ramp you can actually walk.
 
 The discipline that catches a race condition in a deployment pipeline is the same one that catches a race condition in a watershed permit. This work began out of attention sharpened by loss. What it lands on is something sturdier than opinion: habits for inspecting incentives, judging design, and acting while a calendar still permits it.
 
@@ -55,4 +55,4 @@ Welcome to the ascent.
 
 ---
 
-*Not financial, legal, or tax advice. Re-verify citations from primaries before publication.*
+*Not financial, legal, or tax advice. Sources locked 2026-06-17: Meta Llama 2 (https://ai.meta.com/blog/llama-2); Llama 3 (https://ai.meta.com/blog/meta-llama-3); EU AI Act overview (https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai); NIST AI RMF (https://www.nist.gov/itl/ai-risk-management-framework). Verify current URLs at publication. Not financial, legal, or tax advice. Land statistics: see opening-chapter citation lock.*

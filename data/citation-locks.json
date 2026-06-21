@@ -1,0 +1,186 @@
+{
+    "generated_at":  "2026-06-18T11:19:01Z",
+    "open_count":  12,
+    "locked_count":  1,
+    "priority_order":  [
+                           "chapter-05 - OBBBA, EO 14318, NASS TOTAL",
+                           "chapter-10 - EU AI Act dates / Digital Omnibus",
+                           "appendix-c - Month 6 policy clocks",
+                           "remaining chapter locks"
+                       ],
+    "sections":  [
+                     {
+                         "id":  "appendix-c",
+                         "title":  "Appendix C — Twelve-Month Ascent Plan",
+                         "priority":  3,
+                         "note":  "Calendar appendix; IRS and agency dates must be verified at publication from primary sources (https://www.irs.gov/)—do not treat this draft as a tax calendar. USDA NASS Land Values (https://www.nass.usda.gov/Publications/Ag_Overview/); EU AI Act timeline (https://ai-act-service-desk.ec.europa.eu/en/ai-act/eu-ai-act-implementation-timeline); BIS export controls (https://www.bis.gov/) if cited in Month 6. Confirm NASS release month for the current survey year. Not financial, legal, tax, agronomic, or engineering advice.",
+                         "urls":  [
+                                      "https://www.irs.gov/",
+                                      "https://www.nass.usda.gov/Publications/Ag_Overview/",
+                                      "https://ai-act-service-desk.ec.europa.eu/en/ai-act/eu-ai-act-implementation-timeline",
+                                      "https://www.bis.gov/"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#appendix-c"
+                     },
+                     {
+                         "id":  "appendix-a",
+                         "title":  "Appendix A — The Window of Ascent Tool Filter",
+                         "priority":  99,
+                         "note":  "Normative appendix; no external statistics. NIST AI RMF: verify publication title, version, and URL at citation pass (https://www.nist.gov/itl/ai-risk-management-framework). Schumacher references are conceptual, not bibliographic requirements. Not financial, legal, tax, agronomic, or engineering advice.",
+                         "urls":  [
+                                      "https://www.nist.gov/itl/ai-risk-management-framework"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#appendix-a"
+                     },
+                     {
+                         "id":  "chapter-01",
+                         "title":  "Chapter 1 — What Are You Actually Trying to Build?",
+                         "priority":  99,
+                         "note":  "Not financial, legal, or tax advice. Land values: USDA NASS Land Values 2024 Summary (October 2024, Highlights No. 2024-8; https://www.nass.usda.gov/Publications/Highlights/2024/2024LandValuesCashRents.pdf). Beginning-farmer context: USDA ERS (https://www.ers.usda.gov/topics/farm-economy/beginning-limited-resource-and-female-farmers-and-ranchers/ — URL corrected 2026-06-17; verify latest at citation pass). Employment: BLS CPS tables (https://www.bls.gov/cps/tables.htm) — refresh year and table IDs before publication.",
+                         "urls":  [
+                                      "https://www.nass.usda.gov/Publications/Highlights/2024/2024LandValuesCashRents.pdf",
+                                      "https://www.ers.usda.gov/topics/farm-economy/beginning-limited-resource-and-female-farmers-and-ranchers/",
+                                      "https://www.bls.gov/cps/tables.htm"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-01"
+                     },
+                     {
+                         "id":  "chapter-11",
+                         "title":  "Chapter 11 — Use the Window Without Becoming Owned",
+                         "priority":  99,
+                         "note":  "Sources to verify at publication: Orben \u0026 Przybylski (2019), *Psychological Science* (https://doi.org/10.1177/0956797619830329); WHO guidelines on physical activity, sedentary behaviour, and screen time for children (https://www.who.int/health-topics/physical-activity); CISA Secure Our World (https://www.cisa.gov/secure-our-world); deliberate-practice literature (Ericsson—avoid \"10,000 hours\" overclaim); local-first software primary sources as cited. Not medical, legal, financial, or therapeutic advice.",
+                         "urls":  [
+                                      "https://doi.org/10.1177/0956797619830329",
+                                      "https://www.who.int/health-topics/physical-activity",
+                                      "https://www.cisa.gov/secure-our-world"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-11"
+                     },
+                     {
+                         "id":  "chapter-12",
+                         "title":  "Chapter 12 — Build Your Exit Ramp",
+                         "priority":  99,
+                         "note":  "Sources to verify at publication: USDA NASS Land Values summary (https://www.nass.usda.gov/Publications/Ag_Overview/); USDA ERS land access and beginning-farmer publications (https://www.ers.usda.gov/topics/farm-economy/land-use-land-value-tenure/land-access; https://www.ers.usda.gov/topics/farm-economy/beginning-disadvantaged-farmers/); USDA FSA program pages if cited (https://www.fsa.usda.gov/); BLS Occupational Outlook Handbook (https://www.bls.gov/ooh/) and CPS self-employment tables (https://www.bls.gov/cps/); U.S. Census Bureau nonemployer statistics (https://www.census.gov/programs-surveys/nonemployer-statistics.html); Pew Research Center creator-economy and platform studies—read methodology pages before quoting percentages (https://www.pewresearch.org/journalism/2024/11/18/news-influencers-on-youtube/; TikTok followership Oct 2024 release if cited); SBA resource partner network (https://www.sba.gov/local-assistance); Main Street America (https://www.mainstreet.org/) if cited. Not legal, tax, financial, zoning, or employment advice. Consult licensed professionals for your jurisdiction and situation.",
+                         "urls":  [
+                                      "https://www.nass.usda.gov/Publications/Ag_Overview/",
+                                      "https://www.ers.usda.gov/topics/farm-economy/land-use-land-value-tenure/land-access",
+                                      "https://www.ers.usda.gov/topics/farm-economy/beginning-disadvantaged-farmers/",
+                                      "https://www.fsa.usda.gov/",
+                                      "https://www.bls.gov/ooh/",
+                                      "https://www.bls.gov/cps/",
+                                      "https://www.census.gov/programs-surveys/nonemployer-statistics.html",
+                                      "https://www.pewresearch.org/journalism/2024/11/18/news-influencers-on-youtube/",
+                                      "https://www.sba.gov/local-assistance",
+                                      "https://www.mainstreet.org/"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-12"
+                     },
+                     {
+                         "id":  "chapter-06",
+                         "title":  "Chapter 6 — Transitional Betterment vs Purity Paralysis",
+                         "priority":  99,
+                         "note":  "Sources to verify at publication: Stanley et al. 2020 *PLOS ONE* 15(8): e0236638 (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0236638); Whitaker et al. 2024 *Proc. R. Soc. B* (https://pmc.ncbi.nlm.nih.gov/articles/PMC10806435/); Chen et al. 2021 *Soil Biology and Biochemistry* (https://doi.org/10.1016/j.soilbio.2021.108134); Briske et al. 2014 *Agricultural Systems* (https://doi.org/10.1016/j.agsy.2013.10.005); Carter et al. 2014 *Int. J. Biodiversity* (https://doi.org/10.1155/2014/163431); EPA water reuse (https://www.epa.gov/waterreuse); IRENA/NREL modular renewable reports as cited; Ollama (https://ollama.com); Llama license (https://ai.meta.com/llama/license/); Mistral terms (https://mistral.ai/terms/); Nordic heat cases — see data-center chapter citation lock. Not agronomic, legal, financial, or engineering advice.",
+                         "urls":  [
+                                      "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0236638",
+                                      "https://pmc.ncbi.nlm.nih.gov/articles/PMC10806435/",
+                                      "https://doi.org/10.1016/j.soilbio.2021.108134",
+                                      "https://doi.org/10.1016/j.agsy.2013.10.005",
+                                      "https://doi.org/10.1155/2014/163431",
+                                      "https://www.epa.gov/waterreuse",
+                                      "https://ollama.com",
+                                      "https://ai.meta.com/llama/license/",
+                                      "https://mistral.ai/terms/"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-06"
+                     },
+                     {
+                         "id":  "chapter-07",
+                         "title":  "Chapter 7 — What AI Actually Is",
+                         "priority":  99,
+                         "note":  "Sources to verify at publication: NIST AI RMF hub (https://www.nist.gov/itl/ai-risk-management-framework); NIST CSRC glossary — artificial intelligence (https://csrc.nist.gov/glossary/term/artificial_intelligence), machine learning (https://csrc.nist.gov/glossary/term/machine_learning); EU AI Act and Commission guidelines (https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai); Bender et al. 2021, \"On the Dangers of Stochastic Parrots\" (https://doi.org/10.1145/3442188.3445922); WHO assistive technology (https://www.who.int/health-topics/assistive-technology); national AT program pages as cited; model/system card examples from vendors you name. Popular explainers (e.g. Alammar illustrated transformer, https://jalammar.github.io/illustrated-transformer/) for intuition only—not evidentiary. Not legal, medical, or engineering advice.",
+                         "urls":  [
+                                      "https://www.nist.gov/itl/ai-risk-management-framework",
+                                      "https://csrc.nist.gov/glossary/term/artificial_intelligence",
+                                      "https://csrc.nist.gov/glossary/term/machine_learning",
+                                      "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+                                      "https://doi.org/10.1145/3442188.3445922",
+                                      "https://www.who.int/health-topics/assistive-technology",
+                                      "https://jalammar.github.io/illustrated-transformer/"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-07"
+                     },
+                     {
+                         "id":  "chapter-08",
+                         "title":  "Chapter 8 — Honest Objections, Honest Answers",
+                         "priority":  99,
+                         "note":  "Sources to verify at publication: HALoGEN ACL 2025 (https://aclanthology.org/2025.acl-long.71/; arXiv:2501.08292); Copyright.gov AI hub (https://www.copyright.gov/ai/) and report parts (Part 1 digital replicas Jul 2024; Part 2 copyrightability Jan 2025; Part 3 training May 2025); FR 88 FR 16190 registration guidance (https://www.federalregister.gov/documents/2023/03/16/2023-05321); *New York Times v. OpenAI* docket as cited; IEA Energy and AI (https://www.iea.org/reports/energy-and-ai/understanding-the-energy-ai-nexus); NIST AI RMF (https://www.nist.gov/itl/ai-risk-management-framework); EU AI Act Commission texts (https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai); BIS export-control notices if cited (https://www.bis.gov); FDA software-as-medical-device guidance if health claims appear; WHO/AT program materials for access subsection; ACM qualitative studies on coding assistants if cited. Not legal, medical, financial, or engineering advice.",
+                         "urls":  [
+                                      "https://aclanthology.org/2025.acl-long.71/",
+                                      "https://www.copyright.gov/ai/",
+                                      "https://www.federalregister.gov/documents/2023/03/16/2023-05321",
+                                      "https://www.iea.org/reports/energy-and-ai/understanding-the-energy-ai-nexus",
+                                      "https://www.nist.gov/itl/ai-risk-management-framework",
+                                      "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+                                      "https://www.bis.gov"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-08"
+                     },
+                     {
+                         "id":  "chapter-09",
+                         "title":  "Chapter 9 — AI as Leverage for Ordinary People",
+                         "priority":  99,
+                         "note":  "Sources to verify at publication: Goldman Sachs pressroom small-business AI survey primary PDF (https://www.goldmansachs.com/pressroom/); McKinsey State of AI (https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai); SBA Office of Advocacy (https://advocacy.sba.gov/) current outlook PDF; Census BTOS AI-adoption survey items if cited (https://www.census.gov/econdata/business-trends-and-outlook-survey); NBER w33795 (https://www.nber.org/papers/w33795); MIT/Copilot RCT papers via economics.mit.edu as cited; WHO assistive-technology materials (https://www.who.int/health-topics/assistive-technology). Not legal, medical, financial, or engineering advice.",
+                         "urls":  [
+                                      "https://www.goldmansachs.com/pressroom/",
+                                      "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+                                      "https://advocacy.sba.gov/",
+                                      "https://www.census.gov/econdata/business-trends-and-outlook-survey",
+                                      "https://www.nber.org/papers/w33795",
+                                      "https://www.who.int/health-topics/assistive-technology"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#chapter-09"
+                     },
+                     {
+                         "id":  "colophon",
+                         "title":  "Colophon",
+                         "priority":  99,
+                         "note":  "*Human role:** thesis, architecture (`spine.md`), research direction, fact boundaries, personal and biographical material (where present), voice calibration, accept/reject on every section, citation lock decisions at publication.",
+                         "urls":  [
+
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#colophon"
+                     },
+                     {
+                         "id":  "conclusion",
+                         "title":  "Conclusion — Build the Better Alternative",
+                         "priority":  99,
+                         "note":  "No new empirical claims in this chapter; exemplars callback prior chapters. Appendices A–C: see each appendix citation lock. Re-verify primary sources at publication when adjacent chapters are locked. Not financial, legal, tax, agronomic, or engineering advice.",
+                         "urls":  [
+
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#conclusion"
+                     },
+                     {
+                         "id":  "introduction",
+                         "title":  "Introduction — The Narrowing Window",
+                         "priority":  99,
+                         "note":  "Not financial, legal, or tax advice. Sources locked 2026-06-17: Meta Llama 2 (https://ai.meta.com/blog/llama-2); Llama 3 (https://ai.meta.com/blog/meta-llama-3); EU AI Act overview (https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai); NIST AI RMF (https://www.nist.gov/itl/ai-risk-management-framework). Verify current URLs at publication. Not financial, legal, or tax advice. Land statistics: see opening-chapter citation lock.",
+                         "urls":  [
+                                      "https://ai.meta.com/blog/llama-2",
+                                      "https://ai.meta.com/blog/meta-llama-3",
+                                      "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+                                      "https://www.nist.gov/itl/ai-risk-management-framework"
+                                  ],
+                         "reader":  "https://ascendism.github.io/book/#introduction"
+                     }
+                 ],
+    "locked_sections":  [
+                            {
+                                "id":  "chapter-10",
+                                "title":  "Chapter 10 — Why This Era Is Temporary",
+                                "priority":  2,
+                                "note":  "Sources locked 2026-06-17: European Commission AI Act overview (https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai); AI Act Service Desk timeline (https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act — verified dates: Feb 2025, Aug 2025, Aug 2026, Aug 2027); EUR-Lex Regulation (EU) 2024/1689 (https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689); Bruegel AI Act analysis (https://www.bruegel.org/analysis/european-union-ai-act-premature-or-precocious-regulation); BIS advanced computing rules (https://www.bis.gov/); CSIS export-control analysis (https://www.csis.org/analysis/understanding-biden-administrations-updated-export-controls); ITU Facts and Figures (https://www.itu.int/itu-d/reports/statistics/facts-figures-2024); cloud provider pricing archives (https://web.archive.org/). Not legal, export-compliance, financial, or engineering advice.",
+                                "reader":  "https://ascendism.github.io/book/#chapter-10"
+                            }
+                        ]
+}

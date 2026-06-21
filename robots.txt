@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ascendism.github.io/sitemap.xml

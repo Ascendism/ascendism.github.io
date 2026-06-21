@@ -2,7 +2,7 @@
   WOA News Article v1
   id: 2026-05-17-data-centers-farmland
   date: 2026-05-17
-  charts: IRA tax timeline; grid interconnection queues (illustrative)
+  charts: federal tax clocks (IRA + OBBBA, illustrative); grid interconnection queues (illustrative)
   images: vis1.png, vis4.png
 -->
 <article
@@ -62,6 +62,13 @@
     }
     .woa-news-list li { margin-bottom: 0.5rem; }
     .woa-news-list a { word-break: break-word; }
+    .woa-news-related {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      color: var(--text-muted);
+    }
+    .woa-news-related a { color: var(--accent); }
   </style>
 
   <div class="woa-news-body">
@@ -100,36 +107,38 @@
 
     <p>Hyperscalers aren’t just buying servers—they’re racing to secure grid capacity and generation alongside them. Power delivery on schedule is becoming the bottleneck.</p>
 
-    <h3>The 2032 tax window</h3>
+    <h3>Three tax clocks (not one “2032” story)</h3>
 
-    <p>That race is being driven by a fixed deadline: <strong>January 1, 2032</strong>.</p>
+    <p>Tax policy is part of the rush. It is not one deadline. Three federal clocks overlap — and the <strong>One Big Beautiful Bill Act</strong> (OBBBA, signed July 2025) changed two of them.</p>
 
-    <p>The Inflation Reduction Act created massive federal tax credits for clean energy projects. If you start construction before that date, you lock in the full value. We’re talking 30% to 50% off upfront costs, depending on what you build and where you build it. After 2032, the credits don’t vanish. They phase down based on domestic sourcing, labor rules, and location.</p>
+    <p><strong>Clock 1 — equipment.</strong> OBBBA restored <strong>100% bonus depreciation</strong> for qualifying data-center assets placed in service after January 19, 2025 (HVAC, electrical, servers isolated in a cost-segregation study). That front-loads deductions when capex runs into the billions. Trade coverage treats this as a durable federal rule for equipment, not a 2032 sunset on the rack itself.</p>
 
-    <p>For companies trying to scale at this pace, that window is a financial accelerant. You either build now to claim the credits, or you pay full price later.</p>
+    <p><strong>Clock 2 — co-located wind and solar.</strong> The Inflation Reduction Act’s clean electricity credits (Sections <strong>45Y</strong> and <strong>48E</strong>) used to be discussed with a long runway — often summarized around an <strong>2032</strong> “applicable year” before phase-down. <strong>OBBBA moved wind and solar much earlier:</strong> IRS guidance requires applicable wind and solar to <strong>begin construction before July 5, 2026</strong> and generally be <strong>placed in service by December 31, 2027</strong>. Data centers do not claim those credits on the building; the solar field or wind port next door does — but the PPA price still changes the campus economics.</p>
+
+    <p><strong>Clock 3 — everything else.</strong> Nuclear PPAs, geothermal, storage, and efficient-building deductions each carry their own begin-construction and placed-in-service lines under OBBBA and prior law. Congressional Research Service summaries note other zero-emissions facilities may need construction before <strong>2033</strong> for full credits. <strong>2032</strong> still matters in public debate and for some supply lines (e.g., existing nuclear production credits) — but it is not the operative sprint date for new wind and solar after OBBBA.</p>
 
     <figure class="woa-news-figure woa-news-figure--chart">
       <canvas
         id="woa-news-chart-ira-timeline-2026-05-17"
         role="img"
-        aria-label="Timeline chart: IRA passes in 2022, energy bill extends credits in 2024, full credit construction deadline January 1 2032, then illustrative phase-down"
+        aria-label="Illustrative chart: three federal tax clocks for data center builds — permanent-style bonus depreciation on equipment after 2025, wind and solar credit cliff in 2026-2027 under OBBBA, longer 2032-era phase-down for other clean generation"
       ></canvas>
-      <figcaption>IRA clean-energy credits and the Jan. 1, 2032 construction window (illustrative phase-down curve — verify against current statute).</figcaption>
+      <figcaption>Illustrative federal tax clocks (IRA + OBBBA). Wind/solar: begin construction before July 5, 2026; in service by Dec. 31, 2027 per IRS Notice 2025-42. Verify all dates against statute before relying on them in a filing or hearing.</figcaption>
     </figure>
 
     <h3>Turbines, solar, and the power crunch</h3>
 
-    <p>Data centers themselves don’t get these credits. Clean energy projects do. But hyperscalers are co-building wind farms, solar arrays, and grid-scale batteries right next to their compute facilities so they can qualify, lock in power contracts, and meet corporate sustainability targets.</p>
+    <p>Congress does not offer a unique “data center credit.” Congressional Research Service reporting describes <strong>indirect</strong> benefits: cheaper power from subsidized generation, on-site storage (Sections 48 / 48E), and supply-chain credits for components. Hyperscalers co-build wind, solar, and batteries beside compute so they can lock contracts and meet sustainability targets.</p>
 
-    <p>That’s where the turbine and generation credits come in. The 2024 bipartisan energy bill extended key tax provisions through 2032, including:</p>
+    <p>Relevant provisions to read in the statute (not the comment thread):</p>
 
     <ul class="woa-news-list">
-      <li>Wind project construction credits (Section 45W)</li>
-      <li>Clean electricity investment credits (Section 48E)</li>
-      <li>Advanced manufacturing credits for wind turbine components, inverters, and battery cells (Section 45X)</li>
+      <li>Clean electricity production credit (<strong>Section 45Y</strong>) and investment credit (<strong>Section 48E</strong>) — wind/solar deadlines accelerated under OBBBA</li>
+      <li>Advanced manufacturing production credit (<strong>Section 45X</strong>) for turbines, inverters, battery cells — phased under OBBBA</li>
+      <li>100% bonus depreciation (<strong>Section 168(k)</strong>) on qualifying equipment — OBBBA</li>
     </ul>
 
-    <p>These aren’t abstract policy language. They’re line items that turn a $100M renewable project into an $80M one. When you attach that to a data center build-out, you get two things: subsidized power that meets compliance targets, and a direct cost advantage over competitors waiting it out.</p>
+    <p>These are line items that turn a $100M renewable project into an $80M one on paper. Attached to a data-center build-out, they buy subsidized power and a cost edge over competitors who miss the construction window.</p>
 
     <h3>The real bottleneck</h3>
 
@@ -151,6 +160,7 @@
     <p>Most of this leaves a paper trail. Skip the headlines and follow the filings.</p>
 
     <ul class="woa-news-list">
+      <li><strong>CRS &amp; IRS primaries</strong> — <a href="https://www.congress.gov/crs-product/R48583" rel="noopener noreferrer">CRS R48583</a> (energy tax benefits for data centers); <a href="https://www.everycrsreport.com/reports/IN12624.html" rel="noopener noreferrer">CRS IN12624</a> (OBBBA vs IRA credits); <a href="https://www.irs.gov/pub/irs-drop/n-25-42.pdf" rel="noopener noreferrer">IRS Notice 2025-42</a> (wind/solar begin-construction under OBBBA).</li>
       <li><strong>DOE Loan Programs Office pipeline</strong> — Fast-tracking billions in direct loans for clean energy projects tied to data-center power. Filter by renewable and commercial/industrial. The pipeline moves faster than Congress.</li>
       <li><strong>State PUC tariff filings</strong> — Search “[State] PUC datacenter interconnection rate.” You’ll see what grid upgrades are being forced, who’s funding them, and when.</li>
       <li><strong>SEC filings and power purchase agreements</strong> — Hyperscalers disclose 10+ year power commitments in quarterly reports. Look for “co-located generation” or “direct wire agreement.” That’s the actual timeline.</li>
@@ -159,9 +169,11 @@
 
     <h3>The bottom line</h3>
 
-    <p>Follow the PPAs, the IRA timelines, and the interconnection queues and the surveillance label stops matching the build. AI is the headline; underneath it’s tax credits, grid capacity, and who locks in power before the queue stalls.</p>
+    <p>Follow the PPAs, the <strong>three tax clocks</strong> (equipment depreciation, wind/solar 2026–2027, everything else), and the interconnection queues and the surveillance label stops matching the build. AI is the headline; underneath it’s OBBBA and IRA incentives, grid capacity, and who locks in power before the queue stalls.</p>
 
     <p>If you want to see where the next wave of infrastructure lands, read the filings—not the comment threads.</p>
+
+    <p class="woa-news-related"><em>Related:</em> <a href="/#news-2026-05-21-eo-14318-data-center-permitting">The other data center sprint — EO 14318 federal permitting</a> (May 21, 2026).</p>
 
     <figure class="woa-news-figure">
       <img
@@ -207,26 +219,47 @@
           new Chart(elIra, {
             type: "line",
             data: {
-              labels: ["2020", "2021", "2022", "2023", "2024", "2025", "2026", "2028", "2030", "2032", "2034", "2036"],
+              labels: ["2022", "2024", "2025", "2026", "2027", "2028", "2030", "2032", "2034"],
               datasets: [
                 {
-                  label: "Illustrative max ITC value (%)",
-                  data: [0, 0, 50, 50, 50, 50, 50, 50, 50, 50, 38, 28],
-                  borderColor: c.accent,
-                  backgroundColor: c.fill,
+                  label: "Wind/solar §45Y/48E (illustrative % of max)",
+                  data: [0, 50, 50, 50, 50, 5, 5, 5, 5],
+                  borderColor: c.warn,
+                  backgroundColor: "rgba(201, 160, 144, 0.35)",
                   fill: true,
-                  tension: 0.15,
+                  tension: 0.1,
                   pointRadius: function (ctx) {
-                    var y = ctx.dataIndex;
-                    return y === 2 || y === 4 || y === 9 ? 5 : 2;
+                    var i = ctx.dataIndex;
+                    return i === 2 || i === 3 || i === 4 || i === 5 ? 5 : 2;
                   },
                   pointBackgroundColor: function (ctx) {
                     var i = ctx.dataIndex;
                     if (i === 2) return c.accent;
-                    if (i === 4) return c.accentDim;
-                    if (i === 9) return c.warn;
-                    return c.accent;
+                    if (i === 3) return c.warn;
+                    if (i === 4) return c.warn;
+                    if (i === 5) return c.accentDim;
+                    return c.warn;
                   },
+                },
+                {
+                  label: "Other clean gen. — IRA-era 2032 phase (illustrative)",
+                  data: [0, 50, 50, 50, 50, 50, 50, 50, 38],
+                  borderColor: c.accent,
+                  borderDash: [6, 4],
+                  backgroundColor: "transparent",
+                  fill: false,
+                  tension: 0.15,
+                  pointRadius: 2,
+                },
+                {
+                  label: "Equipment bonus dep. (qualifying assets)",
+                  data: [0, 0, 100, 100, 100, 100, 100, 100, 100],
+                  borderColor: c.accentDim,
+                  backgroundColor: c.fillDim,
+                  fill: false,
+                  tension: 0,
+                  pointRadius: 0,
+                  borderWidth: 2,
                 },
               ],
             },
@@ -235,18 +268,20 @@
               maintainAspectRatio: true,
               aspectRatio: 2.4,
               plugins: {
-                legend: { display: false },
+                legend: { position: "bottom" },
                 tooltip: {
                   callbacks: {
                     afterTitle: function (items) {
                       var i = items[0] && items[0].dataIndex;
-                      if (i === 2) return "IRA passes";
-                      if (i === 4) return "2024 energy bill extends credits";
-                      if (i === 9) return "Construction deadline for full value";
+                      if (i === 0) return "IRA enacted";
+                      if (i === 2) return "OBBBA signed; bonus dep. on equipment";
+                      if (i === 3) return "Wind/solar: begin construction before Jul 5, 2026";
+                      if (i === 4) return "Wind/solar: in service by Dec 31, 2027";
+                      if (i === 7) return "Pre-OBBBA IRA: 2032 applicable year (other tech)";
                       return "";
                     },
                     label: function (ctx) {
-                      return "~" + ctx.parsed.y + "% (illustrative)";
+                      return ctx.dataset.label + ": ~" + ctx.parsed.y + "% (illustrative)";
                     },
                   },
                 },

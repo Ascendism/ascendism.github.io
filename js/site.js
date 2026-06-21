@@ -470,6 +470,509 @@
     });
   }
 
+  const BOOK_PROGRESS_KEY = "woa-book-progress";
+  const WORDS_PER_MIN = 230;
+  const BOOK_MAP_SKIP_IDS = new Set([
+    "title-page",
+    "copyright",
+    "dedication",
+    "table-of-contents",
+    "acknowledgments",
+    "colophon",
+  ]);
+
+  function formatTotalReadingTime(words) {
+    const min = Math.max(1, Math.ceil((words || 0) / WORDS_PER_MIN));
+    const hours = Math.floor(min / 60);
+    const rem = min % 60;
+    if (hours < 1) return "~" + min + " min read";
+    if (rem === 0) return "~" + hours + " hr read";
+    return "~" + hours + " hr " + rem + " min read";
+  }
+
+  function formatBuildDate(iso) {
+    const built = new Date(iso);
+    if (Number.isNaN(built.getTime())) return null;
+    return built.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+
+  function urlHostLabel(url) {
+    try {
+      const host = new URL(url).hostname.replace(/^www\./, "");
+      return host.length > 28 ? host.slice(0, 25) + "…" : host;
+    } catch (err) {
+      return "source";
+    }
+  }
+
+  function appendCitationUrls(container, urls) {
+    if (!urls || !urls.length) return;
+    const list = document.createElement("ul");
+    list.className = "citation-lock-item__urls";
+    urls.slice(0, 8).forEach(function (url) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = urlHostLabel(url);
+      a.title = url;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    if (urls.length > 8) {
+      const more = document.createElement("li");
+      more.className = "citation-lock-item__urls-more";
+      more.textContent = "+" + (urls.length - 8) + " more in manuscript";
+      list.appendChild(more);
+    }
+    container.appendChild(list);
+  }
+
+  function renderCitationProgress(locked, open, labelEl, barEl, panelEl) {
+    const total = locked + open;
+    if (!total || !labelEl || !barEl) return;
+
+    const pct = Math.round((locked / total) * 100);
+    barEl.style.width = pct + "%";
+    if (panelEl) panelEl.hidden = false;
+
+    let nextHint = "";
+    if (open > 0) {
+      nextHint =
+        ' Next up: <a href="' +
+        siteUrl("book/#chapter-10") +
+        '">Chapter 10</a> (EU AI Act / Digital Omnibus).';
+    }
+
+    labelEl.innerHTML =
+      "<strong>" +
+      locked +
+      " of " +
+      total +
+      "</strong> citation sections verified for print (" +
+      pct +
+      "%). " +
+      open +
+      " still open — " +
+      '<a href="' +
+      siteUrl("resources/#citation-locks") +
+      '">full lock list</a>.' +
+      nextHint;
+  }
+
+  function bookStatsLine(meta) {
+    const chapters = meta.chapters || 0;
+    const sections = meta.sections || 0;
+    const words = meta.words || 0;
+    const built = meta.generated_at ? formatBuildDate(meta.generated_at) : null;
+    let line =
+      chapters +
+      " chapters · " +
+      sections +
+      " sections · ~" +
+      words.toLocaleString() +
+      " words · " +
+      formatTotalReadingTime(words) +
+      " · draft";
+    if (built) line += " · built " + built;
+    return line;
+  }
+
+  function readBookProgress() {
+    try {
+      const raw = localStorage.getItem(BOOK_PROGRESS_KEY);
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      return data && data.id ? data : null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  async function loadBookMeta() {
+    let meta = null;
+    try {
+      const bookRes = await fetch(dataUrl("book.json"), { cache: "no-store" });
+      if (bookRes.ok) meta = await bookRes.json();
+    } catch (err) {
+      /* fall through */
+    }
+
+    const manifestUrl = siteUrl("book/read/manifest.json");
+    try {
+      const res = await fetch(manifestUrl, { cache: "no-store" });
+      if (res.ok) {
+        const manifest = await res.json();
+        const parts = manifest.parts || [];
+        const words = parts.reduce(function (sum, part) {
+          return sum + (part.words || 0);
+        }, 0);
+        meta = meta || {};
+        meta.generated_at = meta.generated_at || manifest.generated_at;
+        meta.parts = parts;
+        if (!meta.chapters) {
+          meta.chapters = parts.filter(function (part) {
+            return /^chapter-/.test(part.id);
+          }).length;
+        }
+        if (!meta.sections) meta.sections = parts.length;
+        if (!meta.words) meta.words = words;
+      }
+    } catch (err) {
+      /* manifest optional if book.json alone suffices for stats */
+    }
+
+    if (meta) return meta;
+
+    throw new Error(manifestUrl + " unavailable");
+  }
+
+  function shortPartTitle(title) {
+    return title
+      .replace(/^Chapter \d+ — /, "Ch. ")
+      .replace(/^Introduction — /, "Intro · ")
+      .replace(/^Appendix ([A-C]) — /, "App. $1 · ");
+  }
+
+  function mapPartKicker(part) {
+    if (/^chapter-\d+/.test(part.id)) {
+      const match = part.title.match(/^Chapter\s+(\d+)/);
+      return match ? "Chapter " + match[1] : "Chapter";
+    }
+    if (/^appendix-[a-c]$/.test(part.id)) {
+      const match = part.title.match(/^Appendix\s+([A-C])/);
+      return match ? "Appendix " + match[1] : "Appendix";
+    }
+    if (part.id === "audience-pleas") return "Reader note";
+    if (part.id === "introduction") return "Introduction";
+    if (part.id === "conclusion") return "Conclusion";
+    return "Section";
+  }
+
+  function mapPartTitle(part) {
+    return String(part.title || "")
+      .replace(/^Chapter \d+ — /, "")
+      .replace(/^Introduction — /, "")
+      .replace(/^Appendix [A-C] — /, "")
+      .trim();
+  }
+
+  function citationBadge(part) {
+    if (part.citation_verified) {
+      return { label: "verified", modifier: "verified" };
+    }
+    if (part.citation_lock) {
+      return { label: "open lock", modifier: "lock" };
+    }
+    return { label: "draft", modifier: "draft" };
+  }
+
+  function setManuscriptMapMessage(text) {
+    const empty = document.getElementById("manuscript-map-empty");
+    if (empty) empty.textContent = text;
+  }
+
+  function renderManuscriptMap(meta) {
+    const list = document.getElementById("manuscript-map-list");
+    const empty = document.getElementById("manuscript-map-empty");
+    if (!list) return;
+
+    const parts = ((meta && meta.parts) || []).filter(function (part) {
+      return part && !BOOK_MAP_SKIP_IDS.has(part.id);
+    });
+
+    list.replaceChildren();
+    if (!parts.length) {
+      if (empty) {
+        empty.hidden = false;
+        empty.textContent = "Manuscript map unavailable in this build.";
+      }
+      return;
+    }
+
+    if (empty) empty.hidden = true;
+
+    parts.forEach(function (part) {
+      const badge = citationBadge(part);
+      const item = document.createElement("a");
+      item.className = "manuscript-map__item";
+      item.href = siteUrl("book/#" + part.id);
+
+      const kicker = document.createElement("span");
+      kicker.className = "manuscript-map__kicker";
+      kicker.textContent = mapPartKicker(part);
+
+      const title = document.createElement("span");
+      title.className = "manuscript-map__title";
+      title.textContent = mapPartTitle(part) || part.title || part.id;
+
+      const metaLine = document.createElement("span");
+      metaLine.className = "manuscript-map__meta";
+      metaLine.textContent =
+        readingTimeMinutes(part.words || 0) + " min · " + (part.words || 0).toLocaleString() + " words";
+
+      const state = document.createElement("span");
+      state.className =
+        "manuscript-map__badge manuscript-map__badge--" + badge.modifier;
+      state.textContent = badge.label;
+
+      item.append(kicker, title, metaLine, state);
+      list.appendChild(item);
+    });
+  }
+
+  function readingProgressPercent(parts, partId) {
+    const idx = parts.findIndex(function (part) {
+      return part.id === partId;
+    });
+    if (idx < 0 || parts.length < 2) return 0;
+    return Math.round(((idx + 1) / parts.length) * 100);
+  }
+
+  function applyContinueReading(meta, primaryCta, heroCta, secondaryCta) {
+    const parts = meta.parts || [];
+    if (!parts.length) return;
+
+    const saved = readBookProgress();
+    const savedPart =
+      saved &&
+      parts.find(function (part) {
+        return part.id === saved.id;
+      });
+
+    const continueEl = document.getElementById("book-continue");
+    const continueBar = document.getElementById("book-continue-bar");
+    const continueLabel = document.getElementById("book-continue-label");
+
+    if (primaryCta && savedPart && savedPart.id !== "introduction") {
+      const pct = readingProgressPercent(parts, savedPart.id);
+      const shortTitle = shortPartTitle(savedPart.title);
+
+      primaryCta.textContent = "Continue reading";
+      primaryCta.href = "book/#" + savedPart.id;
+      if (heroCta) {
+        heroCta.textContent = "Continue reading";
+        heroCta.href = "book/#" + savedPart.id;
+      }
+      if (secondaryCta) {
+        secondaryCta.hidden = false;
+        secondaryCta.textContent = "Start from the introduction";
+        secondaryCta.href = "book/#introduction";
+      }
+      if (continueEl && continueBar && continueLabel) {
+        continueEl.hidden = false;
+        continueBar.style.width = pct + "%";
+        continueLabel.innerHTML =
+          "You left off at <strong>" +
+          shortTitle +
+          "</strong> — " +
+          pct +
+          "% through the manuscript. <a href=\"book/#" +
+          savedPart.id +
+          "\">Pick up here</a>.";
+      }
+    } else {
+      if (primaryCta) primaryCta.href = "book/#introduction";
+      if (heroCta) heroCta.href = "book/#introduction";
+      if (continueEl) continueEl.hidden = true;
+    }
+  }
+
+  function renderBookMetaPanels(meta) {
+    const built = meta.generated_at ? formatBuildDate(meta.generated_at) : null;
+    const stats = bookStatsLine(meta);
+
+    renderManuscriptMap(meta);
+
+    const statsEl = document.getElementById("book-stats");
+    if (statsEl) statsEl.textContent = stats;
+
+    const statusEl = document.getElementById("book-status-detail");
+    if (statusEl) {
+      statusEl.innerHTML =
+        "Full manuscript draft — " +
+        meta.chapters +
+        " chapters, conclusion, three appendices (~" +
+        meta.words.toLocaleString() +
+        " words). Public reader at <a href=\"../book/\">book/</a>; pre-print citation lock and KDP export still open." +
+        (built ? " Web draft built " + built + "." : "");
+    }
+
+    const resourcesBlurb = document.getElementById("resources-book-blurb");
+    if (resourcesBlurb) {
+      resourcesBlurb.innerHTML =
+        "<a href=\"../book/\">Open the draft reader</a> — " +
+        meta.chapters +
+        " chapters, conclusion, three appendices (~" +
+        meta.words.toLocaleString() +
+        " words, " +
+        formatTotalReadingTime(meta.words) +
+        "). Work in progress; citation lock still open before print." +
+        (built ? " Last built " + built + "." : "");
+    }
+  }
+
+  async function renderCitationLocks() {
+    const summaryEl = document.getElementById("citation-locks-summary");
+    const listEl = document.getElementById("citation-locks-list");
+    const lockedEl = document.getElementById("citation-locks-locked");
+    const progressEl = document.getElementById("citation-locks-progress");
+    const progressBar = document.getElementById("citation-locks-bar");
+    const progressLabel = document.getElementById("citation-locks-progress-label");
+    if (!summaryEl || !listEl) return;
+
+    try {
+      const data = await loadJson("citation-locks.json");
+      const sections = (data && data.sections) || [];
+      const locked = (data && data.locked_sections) || [];
+      listEl.replaceChildren();
+
+      if (progressEl && progressBar && progressLabel) {
+        renderCitationProgress(
+          locked.length,
+          sections.length,
+          progressLabel,
+          progressBar,
+          progressEl
+        );
+        progressEl.hidden = false;
+      }
+
+      if (lockedEl) {
+        lockedEl.replaceChildren();
+        if (locked.length) {
+          locked.forEach(function (section) {
+            const li = document.createElement("li");
+            li.className = "citation-lock-item citation-lock-item--done";
+
+            const title = document.createElement("a");
+            title.href = "../book/#" + section.id;
+            title.textContent = section.title;
+
+            const meta = document.createElement("span");
+            meta.className = "citation-lock-item__meta";
+            meta.textContent =
+              section.priority < 99
+                ? "Locked · priority " + section.priority
+                : "Locked at citation pass";
+
+            li.append(title, meta);
+            lockedEl.appendChild(li);
+          });
+          lockedEl.hidden = false;
+        } else {
+          lockedEl.hidden = true;
+        }
+      }
+
+      if (!sections.length && !locked.length) {
+        summaryEl.textContent =
+          "No citation locks detected in the current draft build.";
+        return;
+      }
+
+      const parts = [];
+      if (locked.length) {
+        parts.push(
+          locked.length +
+            " section" +
+            (locked.length === 1 ? "" : "s") +
+            " locked"
+        );
+      }
+      if (sections.length) {
+        parts.push(
+          sections.length +
+            " section" +
+            (sections.length === 1 ? "" : "s") +
+            " still open"
+        );
+      }
+      summaryEl.textContent = parts.join(" · ") + " in the current web draft.";
+
+      if (!sections.length) {
+        const empty = document.createElement("li");
+        empty.className = "citation-lock-item citation-lock-item--empty";
+        empty.textContent = "No open locks in the current build.";
+        listEl.appendChild(empty);
+      }
+
+      sections.forEach(function (section) {
+        const li = document.createElement("li");
+        li.className = "citation-lock-item";
+
+        const title = document.createElement("a");
+        title.href = "../book/#" + section.id;
+        title.textContent = section.title;
+
+        const meta = document.createElement("span");
+        meta.className = "citation-lock-item__meta";
+        meta.textContent =
+          section.priority < 99
+            ? "Priority " + section.priority
+            : "Standard lock";
+
+        const note = document.createElement("p");
+        note.className = "citation-lock-item__note";
+        note.textContent = section.note || "Sources to verify at publication.";
+
+        li.append(title, meta, note);
+        appendCitationUrls(li, section.urls);
+        listEl.appendChild(li);
+      });
+    } catch (err) {
+      summaryEl.textContent =
+        "Citation lock list unavailable — run scripts/build-book-site.ps1 to regenerate.";
+      console.error(err);
+    }
+  }
+
+  async function renderPrePrintPanel() {
+    const panel = document.getElementById("pre-print-panel");
+    const bar = document.getElementById("pre-print-bar");
+    const label = document.getElementById("pre-print-label");
+    if (!panel || !bar || !label) return;
+
+    try {
+      const data = await loadJson("citation-locks.json");
+      const locked = ((data && data.locked_sections) || []).length;
+      const open = ((data && data.sections) || []).length;
+      renderCitationProgress(locked, open, label, bar, panel);
+    } catch (err) {
+      panel.hidden = true;
+      console.error(err);
+    }
+  }
+
+  async function renderBookTeaser() {
+    const statsEl = document.getElementById("book-stats");
+    const primaryCta = document.getElementById("book-primary-cta");
+    const heroCta = document.getElementById("hero-book-cta");
+    const secondaryCta = document.getElementById("book-secondary-cta");
+    const needsMeta =
+      statsEl ||
+      document.getElementById("book-status-detail") ||
+      document.getElementById("resources-book-blurb");
+    if (!needsMeta) return;
+
+    try {
+      const meta = await loadBookMeta();
+      renderBookMetaPanels(meta);
+      applyContinueReading(meta, primaryCta, heroCta, secondaryCta);
+    } catch (err) {
+      if (statsEl) {
+        statsEl.textContent = "Full manuscript draft available in the reader.";
+      }
+      setManuscriptMapMessage("Manuscript map unavailable — open the reader to browse sections.");
+      console.error(err);
+    }
+  }
+
   async function init() {
     const tasks = [];
 
@@ -495,6 +998,10 @@
           .catch(function () {})
       );
     }
+
+    tasks.push(renderBookTeaser());
+    tasks.push(renderCitationLocks());
+    tasks.push(renderPrePrintPanel());
 
     await Promise.all(tasks);
   }

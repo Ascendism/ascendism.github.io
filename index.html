@@ -1,9 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Window of Ascent â€” a practical editorial project on using a temporary technological window to build autonomous, materially grounded lives before enclosure hardens.">
+  <meta name="description" content="Window of Ascent — a practical editorial project on using a temporary technological window to build autonomous, materially grounded lives before enclosure hardens.">
+  <meta property="og:site_name" content="Window of Ascent">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Window of Ascent">
+  <meta property="og:description" content="Using the tools of today to build the freedom of tomorrow — before the window closes.">
+  <meta property="og:url" content="https://ascendism.github.io/">
+  <meta property="og:image" content="https://ascendism.github.io/assets/window_banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Window of Ascent">
+  <meta name="twitter:description" content="Using the tools of today to build the freedom of tomorrow — before the window closes.">
+  <meta name="twitter:image" content="https://ascendism.github.io/assets/window_banner.png">
   <title>Window of Ascent</title>
   <link rel="canonical" href="https://ascendism.github.io/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,9 +28,9 @@
       <div class="site-banner" role="img" aria-label="Window of Ascent"></div>
       <div class="wrap site-header__intro">
         <h1>Window of Ascent</h1>
-        <p class="lead">Using the tools of today to build the freedom of tomorrow â€” before the window closes.</p>
+        <p class="lead">Using the tools of today to build the freedom of tomorrow — before the window closes.</p>
         <p class="hero-cta">
-          <a class="button" href="book/">Read the book</a>
+          <a class="button" id="hero-book-cta" href="book/#introduction">Read the book</a>
           <a class="hero-cta__secondary" href="about/">About the project</a>
         </p>
       </div>
@@ -30,10 +40,12 @@
         <a class="site-nav__brand" href="./">Window of Ascent</a>
         <div class="site-nav__links">
           <a href="#read-book">Read the book</a>
+          <a href="#manuscript-map">Draft map</a>
+          <a href="#reading-paths">Where to start</a>
           <a href="#news">News</a>
           <a href="about/">About</a>
           <a href="resources/">Resources</a>
-          <a href="community/">Discord</a>
+          <a data-discord-link href="#" aria-disabled="true">Discord</a>
         </div>
       </nav>
     </div>
@@ -43,34 +55,88 @@
     <section id="read-book" class="wrap section--lead">
       <p class="eyebrow">Start here</p>
       <h2>Read the book</h2>
-      <p class="section-intro">A practical edition on the narrowing window, tools, incentives, and a grounded exit ramp â€” before enclosure hardens.</p>
+      <p class="section-intro">A practical edition on the narrowing window, tools, incentives, and a grounded exit ramp — before enclosure hardens.</p>
+      <p id="book-stats" class="book-stats" aria-live="polite"></p>
+      <div id="book-continue" class="book-continue" hidden aria-live="polite">
+        <div class="book-continue__track" role="presentation">
+          <div class="book-continue__bar" id="book-continue-bar"></div>
+        </div>
+        <p class="book-continue__label" id="book-continue-label"></p>
+      </div>
       <p class="book-cta">
-        <a class="button" href="book/">Open the draft reader</a>
+        <a class="button" id="book-primary-cta" href="book/#introduction">Open the draft reader</a>
+        <a class="book-cta__secondary" id="book-secondary-cta" href="book/#introduction" hidden>Start from the introduction</a>
         <a class="book-cta__secondary" href="about/">About the project</a>
       </p>
+      <div id="pre-print-panel" class="pre-print-panel" hidden aria-live="polite">
+        <div class="pre-print-panel__track" role="presentation">
+          <div class="pre-print-panel__bar" id="pre-print-bar"></div>
+        </div>
+        <p class="pre-print-panel__label" id="pre-print-label"></p>
+      </div>
+    </section>
+
+    <section id="manuscript-map" class="wrap section--compact">
+      <p class="eyebrow">Draft map</p>
+      <h2>See the shape of the manuscript</h2>
+      <p class="section-intro">A quick scan of the core argument, with reading time and citation-lock state pulled from the current build.</p>
+      <div id="manuscript-map-list" class="manuscript-map" aria-live="polite"></div>
+      <p id="manuscript-map-empty" class="manuscript-map__empty">Loading manuscript map…</p>
+    </section>
+
+    <section id="reading-paths" class="wrap section--compact">
+      <p class="eyebrow">Where to start</p>
+      <h2>Pick a door</h2>
+      <p class="section-intro">One manuscript, different entry points. Jump in where your questions live — you can always read straight through from the <a href="book/#introduction">introduction</a>.</p>
+      <div class="reading-paths">
+        <article class="card path-card">
+          <p class="label">Two doors</p>
+          <h3>Not sure this book is for you</h3>
+          <p>Permission slips for readers who lead with land or with systems — before the shared argument begins.</p>
+          <p class="path-card__links"><a href="book/?path=two-doors#audience-pleas">A note to readers</a></p>
+        </article>
+        <article class="card path-card">
+          <p class="label">Skeptics</p>
+          <h3>Tired of AI hype and panic</h3>
+          <p>Start with honest objections, then the design layer underneath tool-blame.</p>
+          <p class="path-card__links"><a href="book/?path=skeptics#chapter-08">Ch. 8 — Objections</a> · <a href="book/#chapter-04">Ch. 4 — Design</a></p>
+        </article>
+        <article class="card path-card">
+          <p class="label">Infrastructure</p>
+          <h3>Data centers, farms, and incentives</h3>
+          <p>The same extraction pattern on silicon and soil — and why better blueprints matter.</p>
+          <p class="path-card__links"><a href="book/?path=infrastructure#chapter-05">Ch. 5 — Data centers &amp; farms</a> · <a href="book/#chapter-03">Ch. 3 — Incentives</a></p>
+        </article>
+        <article class="card path-card">
+          <p class="label">Action</p>
+          <h3>Ready to build something</h3>
+          <p>Filters, use cases, and a twelve-month plan — practical appendices after the argument lands.</p>
+          <p class="path-card__links"><a href="book/?path=action#appendix-c">Appendix C — 12-month plan</a> · <a href="book/#appendix-a">Appendix A — Tool filter</a></p>
+        </article>
+      </div>
     </section>
 
     <section id="news" class="wrap">
       <h2>News</h2>
-      <p class="section-intro">Summaries first â€” open an article to read the full piece.</p>
+      <p class="section-intro">Summaries first — open an article to read the full piece.</p>
       <div id="news-list" class="news-list" data-news-preview="true" aria-live="polite"></div>
-      <p id="news-empty" class="news-empty" hidden>Loading newsâ€¦</p>
+      <p id="news-empty" class="news-empty" hidden>Loading news…</p>
     </section>
 
   </main>
 
   <footer class="wrap site-footer">
-    <p class="site-footer__tagline"><strong>Window of Ascent</strong> â€” tools, incentives, and a narrowing window.</p>
+    <p class="site-footer__tagline"><strong>Window of Ascent</strong> — tools, incentives, and a narrowing window.</p>
     <p class="site-footer__links">
-      <a href="./">Home</a> Â·
-      <a href="book/">Read the book</a> Â·
-      <a href="about/">About</a> Â·
-      <a href="resources/">Resources</a> Â·
-      <a href="community/">Discord</a> Â·
-      <a href="https://github.com/Ascendism/ascendism.github.io">Site repo</a> Â·
+      <a href="./">Home</a> ·
+      <a href="book/">Read the book</a> ·
+      <a href="about/">About</a> ·
+      <a href="resources/">Resources</a> ·
+      <a data-discord-link href="#" aria-disabled="true">Discord</a> ·
+      <a href="https://github.com/Ascendism/ascendism.github.io">Site repo</a> ·
       <a href="https://github.com/Ascendism/ascendism.github.io/issues">Issues</a>
     </p>
-    <p class="site-footer__contact">Questions or collaboration: <a href="https://github.com/Ascendism/ascendism.github.io/issues/new">open an issue</a> or join us on <a href="community/">Discord</a>.</p>
+    <p class="site-footer__contact">Questions or collaboration: <a href="https://github.com/Ascendism/ascendism.github.io/issues/new">open an issue</a> or join us on <a data-discord-link href="#" aria-disabled="true">Discord</a>.</p>
   </footer>
 
   <script src="js/site.js"></script>
